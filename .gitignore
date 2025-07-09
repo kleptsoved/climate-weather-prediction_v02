@@ -1,0 +1,18 @@
+# Data files
+# NEVER commit raw data files. Only commit small samples if necessary.
+data/raw/
+data/processed/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+__pycache__/
+
+# Environment and credentials
+.env
+*.env
+credentials.json
+
+# IDE and OS specific
+.vscode/
+.idea/
+*.DS_Store

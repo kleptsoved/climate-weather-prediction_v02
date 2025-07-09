@@ -1,0 +1,80 @@
+================================================================================
+          COMPLETE EXPERIMENT REPORT
+================================================================================
+
+Run Timestamp: 20250707-133858
+Data Filter: all
+Training Approach Chosen: tune_all
+
+--- Main Pipeline Performance (All Stations) ---
+          Model      loss  accuracy  training_time
+0     GRU_Tuned  0.077327  0.969935     429.201271
+1     RNN_Tuned  0.080612  0.967625     191.219379
+2   Dense_Tuned  0.093265  0.961104      63.240136
+3    LSTM_Tuned  0.104417  0.958460     575.747455
+4     CNN_Tuned  0.113461  0.951925      58.893872
+5  RandomForest       N/A  0.716776      11.516433
+
+==================================================
+
+--- Single-Station Model Performance ---
+            RandomForest     Dense       CNN       RNN      LSTM       GRU
+DUSSELDORF           1.0  0.997603  0.990196  0.974946  0.984096  0.996078
+MAASTRICHT           1.0  0.994336  0.986274  0.973203  0.990196  0.990414
+BASEL                1.0  0.988235  0.990414  0.972113  0.982135  0.987364
+
+==================================================
+
+--- Station Importance Ranking ---
+       Station  Importance
+4   DUSSELDORF    0.127266
+8   MAASTRICHT    0.108527
+0        BASEL    0.103474
+10    MUNCHENB    0.092766
+2     BUDAPEST    0.074084
+7    LJUBLJANA    0.073459
+3       DEBILT    0.070408
+9       MADRID    0.065217
+5     HEATHROW    0.057761
+11        OSLO    0.052860
+1     BELGRADE    0.051990
+13   STOCKHOLM    0.048161
+6       KASSEL    0.046781
+12   SONNBLICK    0.014968
+14    VALENTIA    0.012278
+
+==================================================
+
+--- Details for Best Keras Model: 'GRU_Tuned' ---
+Optimized using KerasTuner. Final Hyperparameters:
+  - activation: relu
+  - units_1: 96
+  - units_2: 48
+  - dropout: 0.30000000000000004
+  - learning_rate: 0.001
+  - rnn_dense_units: 32
+  - tuner/epochs: 20
+  - tuner/initial_epoch: 0
+  - tuner/bracket: 0
+  - tuner/round: 0
+
+Model Architecture Summary:
+Model: "sequential_1"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ gru_2 (GRU)                          │ (None, 15, 96)              │          30,816 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_1 (Dropout)                  │ (None, 15, 96)              │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ gru_3 (GRU)                          │ (None, 48)                  │          21,024 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_2 (Dense)                      │ (None, 32)                  │           1,568 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_3 (Dense)                      │ (None, 15)                  │             495 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 161,711 (631.69 KB)
+ Trainable params: 53,903 (210.56 KB)
+ Non-trainable params: 0 (0.00 B)
+ Optimizer params: 107,808 (421.13 KB)
+
