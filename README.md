@@ -1,7 +1,7 @@
 # Predictive Modelling for Climate Change Adaptation
 
 
-*Image from the project case study presentation.*
+![Project Title Image](project_title_image.png)
 
 ## Project Summary
 
